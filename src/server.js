@@ -1,11 +1,15 @@
-// src/server.js
 
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import dotenv from "dotenv";
 import { env } from './utils/env.js';
-import { getAllCustomers, getCustomerById } from './services/customers.js';
+import customersRouter from './routers/customers.js';
+import ordersRouter from './routers/orders.js';
+import productsRouter from './routers/products.js';
+import suppliersRouter from './routers/suppliers.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 dotenv.config();
 
@@ -15,7 +19,11 @@ const PORT = Number(env('PORT', '3000'));
 export const startServer = () => {
   const app = express();
 
-  app.use(express.json());
+  app.use(express.json({
+    type: ['application/json', 'application/vnd.api+json'],
+    limit: '100kb',
+  }))
+
   app.use(cors());
 
   app.use(
@@ -26,51 +34,14 @@ export const startServer = () => {
     }),
   );
 
-  app.get('/customers', async (req, res) => {
-    const customers = await getAllCustomers();
+  app.use(customersRouter);
+  app.use(ordersRouter);
+  app.use(productsRouter);
+  app.use(suppliersRouter);
 
-    res.status(200).json({
-      data: customers,
-    });
-  });
+  app.use('*', notFoundHandler);
 
-
-  app.get('/customers/:customerId', async (req, res, next) => {
-    const { customerId } = req.params;
-    const customer = await getCustomerById(customerId);
-
-	if (!customer) {
-	  res.status(404).json({
-		  message: 'Customer not found'
-	  });
-	  return;
-	}
-
-    res.status(200).json({
-      data: customer,
-    });
-  });
-
-
-
-  app.get('/', (req, res) => {
-    res.json({
-      message: 'Hello world!',
-    });
-  });
-
-  app.use('*', (req, res, next) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
-
-  app.use((err, req, res, next) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

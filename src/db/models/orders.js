@@ -1,7 +1,6 @@
-
 import { model, Schema } from 'mongoose';
 
- const customersSchema = new Schema(
+ const ordersSchema = new Schema(
    {
      photo: {
        type: String,
@@ -11,27 +10,27 @@ import { model, Schema } from 'mongoose';
         type: String,
         required: true,
       },
-      email: {
+      address: {
         type: String,
         required: true,
       },
-     spent: {
+      products: {
        type: String,
        required: true,
      },
-     phone: {
+     price: {
        type: String,
        required: true,
      },
-     address: {
+     status: {
        type: String,
        required: true,
      },
-     register_date: {
+     order_date: {
        type: String,
        required: true,
      },
    },
  );
 
- export const CustomersCollection = model('customers', customersSchema);
+ export const OrdersCollection = model('orders', ordersSchema);

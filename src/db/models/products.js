@@ -1,37 +1,36 @@
-
 import { model, Schema } from 'mongoose';
 
- const customersSchema = new Schema(
+ const productsSchema = new Schema(
    {
+    id: {
+       type: String,
+       required: true,
+     },
      photo: {
-       type: String,
-       required: true,
-     },
-     name: {
         type: String,
         required: true,
       },
-      email: {
+      name: {
         type: String,
         required: true,
       },
-     spent: {
+      suppliers: {
        type: String,
        required: true,
      },
-     phone: {
+     stock: {
        type: String,
        required: true,
      },
-     address: {
+     price: {
        type: String,
        required: true,
      },
-     register_date: {
+     category: {
        type: String,
        required: true,
      },
    },
  );
 
- export const CustomersCollection = model('customers', customersSchema);
+ export const ProductsCollection = model('products', productsSchema);
