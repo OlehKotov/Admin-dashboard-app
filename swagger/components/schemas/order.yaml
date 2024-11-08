@@ -1,0 +1,43 @@
+type: object
+required:
+  - _id
+  - photo
+  - name
+  - address
+  - products
+  - price
+  - status
+  - order_date
+properties:
+  _id:
+    description: "Order's id"
+    type: string
+    example: 6723700e46e396b802cad87d
+  photo:
+    description: "Order's photo"
+    type: string
+    example: https://i.imgur.com/jzdyFbb.png
+  name:
+    description: "Order's name"
+    type: string
+    example: Lucas Harris
+  address:
+    description: "Order's address"
+    type: string
+    example: Gulshan-1, Bldg. 99, Apt. 133
+  products:
+    description: "Order's products"
+    type: string
+    example: 11
+  price:
+    description: "Order's price"
+    type: string
+    example: 280.4
+  status:
+    description: "Order's status"
+    type: string
+    example: Shipped
+  order_date:
+    description: "Order's order_date"
+    type: string
+    example: July 31, 2023

@@ -1,14 +1,12 @@
 import { Router } from "express";
-import { getCustomerByIdController, getCustomersController } from "../controllers/customers.js";
 import { ctrlWrapper } from "../utils/ctrlWrapper.js";
 import { authenticate } from '../middlewares/authenticate.js';
+import { getDashboardInfoController } from "../controllers/dashboard.js";
 
 const router = Router();
 
 router.use(authenticate);
 
-router.get('/', ctrlWrapper(getCustomersController));
-router.get('/:customerId', ctrlWrapper(getCustomerByIdController));
-
+router.get('/dashboard', ctrlWrapper(getDashboardInfoController));
 
 export default router;

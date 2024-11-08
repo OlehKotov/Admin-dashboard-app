@@ -24,6 +24,7 @@ import { model, Schema } from 'mongoose';
      },
      status: {
        type: String,
+       enum: ['Completed', 'Confirmed', 'Pending', 'Cancelled', 'Processing', 'Shipped', 'Delivered'],
        required: true,
      },
      order_date: {

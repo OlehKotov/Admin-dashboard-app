@@ -30,7 +30,7 @@ import { model, Schema } from 'mongoose';
      register_date: {
        type: String,
        required: true,
-     },
+     }
    },
  );
 

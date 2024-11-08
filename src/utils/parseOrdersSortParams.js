@@ -1,5 +1,3 @@
-
-
 import { SORT_ORDER } from "../constants/index.js";
 
 const parseSortOrder = (sortOrder) => {
@@ -25,6 +23,7 @@ const parseSortBy = (sortBy) => {
 
   return '_id';
 };
+
 
 export const parseSortOrdersParams = (query) => {
   const { sortOrder, sortBy } = query;

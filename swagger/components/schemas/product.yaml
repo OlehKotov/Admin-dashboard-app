@@ -1,0 +1,38 @@
+type: object
+required:
+  - photo
+  - name
+  - suppliers
+  - stock
+  - price
+  - category
+  - _id
+properties:
+  photo:
+    description: "Product's photo"
+    type: string
+    example: https://i.ibb.co/bLKP624/5-15-1000x1000-min.jpg
+  name:
+    description: "Product's name"
+    type: string
+    example: Zolpidem
+  suppliers:
+    description: "Product's suppliers"
+    type: string
+    example: Uniliver
+  stock:
+    description: "Product's stock"
+    type: string
+    example: 16
+  price:
+    description: "Product's price"
+    type: string
+    example: 41.34
+  category:
+    description: "Product's category"
+    type: string
+    example: Leg
+  _id:
+    description: "Product's id"
+    type: string
+    example: 672def6569ed6b708cf7a516

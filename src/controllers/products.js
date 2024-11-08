@@ -1,14 +1,16 @@
 import createHttpError from 'http-errors';
-
 import { createProduct, deleteProduct, getAllProducts, updateProduct } from '../services/products.js';
 import { parseSortProductsParams } from '../utils/parseProductsSortParams.js';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getProductsController = async (req, res, next) => {
     const { sortBy, sortOrder } = parseSortProductsParams(req.query);
+    const filter = parseFilterParams(req.query);
   try {
     const products = await getAllProducts({
         sortBy,
         sortOrder,
+        filter,
       });
 
     res.json({

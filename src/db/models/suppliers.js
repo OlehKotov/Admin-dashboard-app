@@ -24,6 +24,7 @@ import { model, Schema } from 'mongoose';
      },
      status: {
        type: String,
+       enum: ['Active', 'Deactive'],
        required: true,
      },
    },

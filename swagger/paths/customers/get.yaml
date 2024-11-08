@@ -1,0 +1,45 @@
+
+
+tags:
+  - Customers
+summary: Get list of customers
+operationId: getCustomers
+description: 'Get list of customers with this endpoint'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: name
+    schema:
+      type: string
+      example: Nadia Ivanova
+responses:
+  '200':
+    description: Successfully found customers!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found customers!
+            data:
+              type: object
+              required:
+                - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/customer.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+

@@ -1,9 +1,13 @@
 import { getAllCustomers, getCustomerById } from '../services/customers.js';
 import createHttpError from 'http-errors';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getCustomersController = async (req, res, next) => {
+  const filter = parseFilterParams(req.query);
   try {
-    const customers = await getAllCustomers();
+    const customers = await getAllCustomers({
+      filter,
+    });
 
     res.json({
       status: 200,

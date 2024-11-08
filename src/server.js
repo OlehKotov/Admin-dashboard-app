@@ -4,12 +4,12 @@ import pino from 'pino-http';
 import cors from 'cors';
 import dotenv from "dotenv";
 import { env } from './utils/env.js';
-import customersRouter from './routers/customers.js';
-import ordersRouter from './routers/orders.js';
-import productsRouter from './routers/products.js';
-import suppliersRouter from './routers/suppliers.js';
+import router from './routers/index.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 dotenv.config();
 
@@ -17,14 +17,12 @@ const PORT = Number(env('PORT', '3000'));
 
 
 export const startServer = () => {
+
   const app = express();
 
-  app.use(express.json({
-    type: ['application/json', 'application/vnd.api+json'],
-    limit: '100kb',
-  }))
-
+  app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
   app.use(
     pino({
@@ -34,10 +32,10 @@ export const startServer = () => {
     }),
   );
 
-  app.use(customersRouter);
-  app.use(ordersRouter);
-  app.use(productsRouter);
-  app.use(suppliersRouter);
+  app.use(router);
+
+  app.use('/uploads', express.static(UPLOAD_DIR));
+  app.use('/api-docs', swaggerDocs());
 
   app.use('*', notFoundHandler);
 

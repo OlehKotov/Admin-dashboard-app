@@ -1,11 +1,15 @@
 import { createSupplier, getAllSuppliers, updateSupplier } from "../services/suppliers.js";
 import createHttpError from 'http-errors';
+import { parseFilterParams } from "../utils/parseFilterParams.js";
 
 
 
 export const getSuppliersController = async (req, res, next) => {
+    const filter = parseFilterParams(req.query);
   try {
-    const suppliers = await getAllSuppliers();
+    const suppliers = await getAllSuppliers({
+        filter,
+      });
 
     res.json({
       status: 200,

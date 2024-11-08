@@ -1,0 +1,74 @@
+
+tags:
+  - Products
+summary: Create product
+operationId: createProduct
+description: 'Create a product with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - id
+          - photo
+          - name
+          - suppliers
+          - stock
+          - price
+          - category
+        properties:
+          id:
+            description: "Product's id"
+            type: string
+            example: 31
+          photo:
+            description: "Product's photo"
+            type: string
+            example: https://i.ibb.co/GxTVSVk/shop-4-9-1000x1000-min.jpg
+          name:
+            description: "Product's name"
+            type: string
+            example: Zolpidem
+          suppliers:
+            description: "Product's suppliers"
+            type: string
+            example: ACI
+          stock:
+            description: "Product's stock"
+            type: string
+            example: 12
+          price:
+            description: "Product's price"
+            type: string
+            example: 41.34
+          category:
+            description: "Product's category"
+            type: string
+            example: Leg
+responses:
+  '201':
+    description: Creates a product
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a product!
+            data:
+              type: object
+              $ref: '../../components/schemas/product.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+
