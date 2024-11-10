@@ -1,0 +1,40 @@
+
+tags:
+  - Dashboard
+summary: Get information for dashboard
+operationId: getDashboard
+description: 'Get information for dashboard with this endpoint'
+security:
+  - bearerAuth: []
+responses:
+  '200':
+    description: Successfully found dashboard!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Dashboard info retrieved successfully!
+            data:
+              type: object
+              required:
+                - totalProducts
+                - totalSuppliers
+                - totalCustomers
+                - latestCustomers
+              properties:
+                data:
+                  type: array
+                  items:
+                    $ref: ../../components/schemas/dashboard.yaml
+  '401':
+    $ref: '../../components/responses/401.yaml'

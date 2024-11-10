@@ -12,21 +12,49 @@ tags:
     description: Operations about customers.
   - name: Products
     description: Operations about products.
+  - name: Suppliers
+    description: Operations about suppliers.
+  - name: Orders
+    description: Operations about orders.
   - name: Auth
     description: Auth operations.
 servers:
   - url: http://localhost:3000
   - url: https://example.com/api/v1
 paths:
-  /customers:
+  /api/user/logout:
+    post:
+      $ref: ../swagger/paths/auth/login/login.yaml
+  /api/dashboard:
+    get:
+      $ref: ../swagger/paths/dashboard/get.yaml
+  /api/customers:
     get:
       $ref: ../swagger/paths/customers/get.yaml
-  /customers/{id}:
+  /api/customers/{customerId}:
     get:
-      $ref: ../swagger/paths/customers/{id}/get.yaml
-  /products:
+      $ref: ../swagger/paths/customers/{customerId}/get.yaml
+  /api/products:
+    get:
+      $ref: ../swagger/paths/products/get.yaml
     post:
       $ref: ../swagger/paths/products/post.yaml
+  /api/products/{productId}:
+    put:
+      $ref: ../swagger/paths/products/{productId}/put.yaml
+    delete:
+      $ref: ../swagger/paths/products/{productId}/delete.yaml
+  /api/orders:
+    get:
+      $ref: ../swagger/paths/orders/get.yaml
+  /api/suppliers:
+    get:
+      $ref: ../swagger/paths/suppliers/get.yaml
+    post:
+      $ref: ../swagger/paths/suppliers/post.yaml
+  /api/suppliers/{supplierId}:
+    get:
+      $ref: ../swagger/paths/suppliers/{supplierId}/put.yaml
 components:
   securitySchemes:
     bearerAuth:

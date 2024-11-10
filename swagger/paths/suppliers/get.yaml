@@ -1,10 +1,9 @@
 
-
 tags:
-  - Customers
-summary: Get list of customers
-operationId: getCustomers
-description: 'Get list of customers with this endpoint'
+  - Suppliers
+summary: Get list of suppliers
+operationId: getSuppliers
+description: 'Get list of Suppliers with this endpoint'
 security:
   - bearerAuth: []
 parameters:
@@ -12,10 +11,10 @@ parameters:
     name: name
     schema:
       type: string
-      example: Nadia Ivanova
+      example: Alex Shatov
 responses:
   '200':
-    description: Successfully found customers!
+    description: Successfully found suppliers!
     content:
       application/json:
         schema:
@@ -30,26 +29,24 @@ responses:
               example: 200
             message:
               type: string
-              example: Successfully found customers!
+              example: Successfully found suppliers!
             data:
               type: object
               required:
                 - _id
-                - photo
                 - name
-                - email
-                - spent
-                - phone
                 - address
-                - register_date
+                - suppliers
+                - date
+                - amount
+                - status
               properties:
                 data:
                   type: array
                   items:
-                    $ref: '../../components/schemas/customer.yaml'
+                    $ref: ../../components/schemas/supplier.yaml
                 name:
                   type: string
-                  example: Nadia Ivanova
+                  example: Alex Shatov
   '401':
     $ref: '../../components/responses/401.yaml'
-

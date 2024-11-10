@@ -1,0 +1,69 @@
+
+tags:
+  - Suppliers
+summary: Create supplier
+operationId: createSupplier
+description: 'Create a supplier with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - address
+          - suppliers
+          - date
+          - amount
+          - status
+        properties:
+          name:
+            description: "Supplier's name"
+            type: string
+            example: Hanna Guk
+          address:
+            description: "Supplier's address"
+            type: string
+            example: Kharkov, Barabashova str
+          suppliers:
+            description: "Supplier's suppliers"
+            type: string
+            example: Square
+          date:
+            description: "Supplier's date"
+            type: string
+            example: September 19, 2024
+          amount:
+            description: "Supplier's amount"
+            type: string
+            example: ৳ 6952.53
+          status:
+            description: "Supplier's status"
+            type: string
+            example: Active
+responses:
+  '201':
+    description: Creates a supplier
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a supplier!
+            data:
+              type: object
+              $ref: '../../components/schemas/supplier.yaml'
+  '401':
+    $ref: '../../components/responses/401.yaml'
+

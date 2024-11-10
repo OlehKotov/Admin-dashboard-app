@@ -1,0 +1,42 @@
+type: object
+required:
+  - totalProducts
+  - totalSuppliers
+  - totalCustomers
+  - latestCustomers
+properties:
+  totalProducts:
+    description: "Dashboard's totalProducts"
+    type: integer
+    example: 64
+  totalSuppliers:
+    description: "Dashboard's totalSuppliers"
+    type: integer
+    example: 7
+  totalCustomers:
+    description: "Dashboard's totalCustomers"
+    type: integer
+    example: 88
+  latestCustomers:
+    description: "Dashboard's latestCustomers"
+    type: array
+    items:
+      type: object
+      required:
+        - _id
+        - name
+        - email
+        - spent
+      properties:
+        _id:
+          type: string
+          example: "672378a046e396b802cad9ae"
+        name:
+          type: string
+          example: "Serhii Romanchuk"
+        email:
+          type: string
+          example: "serhii.romanchuk@gmail.com"
+        spent:
+          type: string
+          example: "3,750.00"

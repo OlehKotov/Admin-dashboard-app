@@ -2,7 +2,7 @@
 tags:
   - Customers
 summary: Get customer by id
-operationId: getCustomers
+operationId: getCustomerById
 description: 'Get customer by id'
 security:
   - bearerAuth: []

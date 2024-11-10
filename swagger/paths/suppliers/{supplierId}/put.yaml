@@ -1,0 +1,68 @@
+tags:
+  - Suppliers
+summary: Put supplier by id
+operationId: putSupplier
+description: 'Put supplier by id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: supplierId
+    required: true
+    schema:
+      type: string
+      example: '66743ec3e76c82889aeb0de8'
+requestBody:
+  required: false
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            description: "Supplier's name"
+            type: string
+            example: 'Alex Shatov'
+          address:
+            description: "Supplier's address"
+            type: string
+            example: Mripur-1
+          suppliers:
+            description: "Supplier's suppliers"
+            type: string
+            example: Square
+          date:
+            description: "Supplier's date"
+            type: string
+            example: September 19, 2023
+          amount:
+            description: "Supplier's amount"
+            type: string
+            example: ৳ 6952.53
+          status:
+              description: "Supplier's date"
+              type: string
+              enum: ['Active', 'Deactive']
+responses:
+  '200':
+    description: 'Put supplier by id'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully upserted a supplier!
+            data:
+              type: object
+              $ref: ../../../components/schemas/supplier.yaml
+  '401':
+    $ref: '../../../components/responses/401.yaml'
