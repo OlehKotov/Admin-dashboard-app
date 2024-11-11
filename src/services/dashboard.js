@@ -1,5 +1,3 @@
-// services/dashboard.js
-// import { UsersCollection } from '../db/models/user.js';
 import { ProductsCollection } from '../db/models/products.js';
 import { SuppliersCollection } from '../db/models/suppliers.js';
 import { CustomersCollection } from '../db/models/customers.js';

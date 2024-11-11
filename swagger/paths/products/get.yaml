@@ -58,9 +58,6 @@ responses:
                   type: array
                   items:
                     $ref: ../../components/schemas/product.yaml
-                name:
-                  type: string
-                  example: Montelukast
   '401':
     $ref: '../../components/responses/401.yaml'
 

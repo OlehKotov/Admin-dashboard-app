@@ -1,7 +1,6 @@
 import { CustomersCollection } from '../db/models/customers.js';
 
 export const getAllCustomers = async ({ filter = {} }) => {
-
   const customersQuery = CustomersCollection.find();
 
   if (filter.name) {

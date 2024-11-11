@@ -32,7 +32,6 @@ export const loginUser = async (payload) => {
 
   const accessToken = randomBytes(30).toString('base64');
 
-
   return await SessionsCollection.create({
     userId: user._id,
     accessToken,
@@ -45,9 +44,9 @@ export const logoutUser = async (sessionId) => {
 };
 
 export const getUserInfo = async (userId) => {
-    const user = await UsersCollection.findById(userId, 'name email');
-    if (!user) {
-      throw new createHttpError(404, 'User not found');
-    }
-    return user;
-  };
+  const user = await UsersCollection.findById(userId, 'name email');
+  if (!user) {
+    throw new createHttpError(404, 'User not found');
+  }
+  return user;
+};

@@ -1,20 +1,14 @@
 
 tags:
-  - Suppliers
-summary: Get list of suppliers
-operationId: getSuppliers
-description: 'Get list of Suppliers with this endpoint'
+  - User-Info
+summary: Get user info
+operationId: getUserInfo
+description: 'Get user info with this endpoint'
 security:
   - bearerAuth: []
-parameters:
-  - in: query
-    name: name
-    schema:
-      type: string
-      example: Alex Shatov
 responses:
   '200':
-    description: Successfully found suppliers!
+    description: Successfully found user info!
     content:
       application/json:
         schema:
@@ -29,21 +23,17 @@ responses:
               example: 200
             message:
               type: string
-              example: Successfully found suppliers!
+              example: User info retrieved successfully!
             data:
               type: object
               required:
                 - _id
                 - name
-                - address
-                - suppliers
-                - date
-                - amount
-                - status
+                - email
               properties:
                 data:
                   type: array
                   items:
-                    $ref: ../../components/schemas/supplier.yaml
+                    $ref: ../../components/schemas/userinfo.yaml
   '401':
     $ref: '../../components/responses/401.yaml'

@@ -58,8 +58,5 @@ responses:
                   type: array
                   items:
                     $ref: ../../components/schemas/order.yaml
-                name:
-                  type: string
-                  example: Lesya Ukrainka
   '401':
     $ref: '../../components/responses/401.yaml'

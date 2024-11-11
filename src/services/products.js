@@ -1,20 +1,6 @@
 import { ProductsCollection } from '../db/models/products.js';
 import { SORT_ORDER } from '../constants/index.js';
 
-// export const getAllProducts = async ({
-//   sortOrder = SORT_ORDER.ASC,
-//   sortBy = '_id',
-// }) => {
-
-//   const productsQuery = ProductsCollection.find();
-//   const productsCount = await ProductsCollection.find()
-//     .merge(productsQuery)
-//     .countDocuments();
-
-//   const products = await productsQuery.sort({ [sortBy]: sortOrder }).exec();
-//   return products;
-// };
-
 export const getAllProducts = async ({
   sortOrder = SORT_ORDER.ASC,
   sortBy = '_id',

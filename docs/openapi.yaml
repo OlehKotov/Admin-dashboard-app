@@ -8,6 +8,8 @@ info:
   description:
     This is a documentation of E-Pharmacy app
 tags:
+  - name: Auth
+    description: Auth operations.
   - name: Customers
     description: Operations about customers.
   - name: Products
@@ -16,15 +18,16 @@ tags:
     description: Operations about suppliers.
   - name: Orders
     description: Operations about orders.
-  - name: Auth
-    description: Auth operations.
 servers:
   - url: http://localhost:3000
   - url: https://example.com/api/v1
 paths:
-  /api/user/logout:
+  /api/user/login:
     post:
       $ref: ../swagger/paths/auth/login/login.yaml
+  /api/user/logout:
+    post:
+      $ref: ../swagger/paths/auth/logout/logout.yaml
   /api/dashboard:
     get:
       $ref: ../swagger/paths/dashboard/get.yaml

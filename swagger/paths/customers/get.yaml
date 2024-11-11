@@ -1,5 +1,4 @@
 
-
 tags:
   - Customers
 summary: Get list of customers
@@ -47,9 +46,6 @@ responses:
                   type: array
                   items:
                     $ref: '../../components/schemas/customer.yaml'
-                name:
-                  type: string
-                  example: Nadia Ivanova
   '401':
     $ref: '../../components/responses/401.yaml'
 

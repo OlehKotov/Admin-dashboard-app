@@ -16,11 +16,11 @@ requestBody:
           email:
             description: "User's email"
             type: string
-            example: mail@gmail.com
+            example: guest@gmail.com
           password:
             description: "User's password"
             type: string
-            example: P@ssw0rd
+            example: "12345678"
 responses:
   '200':
     description: Successfully logged in an user!
