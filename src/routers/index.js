@@ -5,6 +5,7 @@ import ordersRouter from './orders.js';
 import productsRouter from './products.js';
 import suppliersRouter from './suppliers.js';
 import dashboardRoutes from './dashboard.js';
+import nearestRoutes from './nearest.js';
 
 const router = Router();
 
@@ -14,5 +15,6 @@ router.use('/api/orders', ordersRouter);
 router.use('/api/products', productsRouter);
 router.use('/api/suppliers', suppliersRouter);
 router.use('/api', dashboardRoutes);
+router.use('/api/stores/', nearestRoutes);
 
 export default router;
