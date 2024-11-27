@@ -1,5 +1,5 @@
 import { getNearest } from '../services/nearest.js';
-// import createHttpError from 'http-errors';
+import createHttpError from 'http-errors';
 
 export const getNearestController = async (req, res, next) => {
 

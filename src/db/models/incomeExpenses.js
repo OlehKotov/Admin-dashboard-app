@@ -18,4 +18,4 @@ import { model, Schema } from 'mongoose';
    },
  );
 
- export const IncomeExpensesCollection = model('Income-Expense', incomeExpensesSchema);
+ export const IncomeExpensesCollection = model('Income-Expenses', incomeExpensesSchema);
