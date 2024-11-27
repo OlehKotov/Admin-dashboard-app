@@ -1,8 +1,8 @@
-import { NearestFarmaciesCollection } from "../db/models/nearest";
+import { NearestCollection } from "../db/models/nearest.js";
 
 
 
-export const getNearestFarmacies = async () => {
-    const nearestfarmacies = await NearestFarmaciesCollection.find();
-    return nearestfarmacies;
+export const getNearest = async () => {
+    const nearest = await NearestCollection.find();
+    return nearest;
   };

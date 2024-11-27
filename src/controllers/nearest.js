@@ -1,15 +1,15 @@
-import { getNearestFarmacies } from '../services/nearest.js';
-import createHttpError from 'http-errors';
+import { getNearest } from '../services/nearest.js';
+// import createHttpError from 'http-errors';
 
-export const getNearestFarmaciesController = async (req, res, next) => {
+export const getNearestController = async (req, res, next) => {
 
   try {
-    const nearestFarmacies = await getNearestFarmacies();
+    const nearest = await getNearest();
 
     res.json({
       status: 200,
       message: 'Successfully found neares-farmacies!',
-      data: nearestFarmacies,
+      data: nearest,
     });
   } catch (error) {
     next(error);

@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
- const nearestFarmaciesSchema = new Schema(
+ const nearestSchema = new Schema(
    {
      name: {
         type: String,
@@ -25,4 +25,4 @@ import { model, Schema } from 'mongoose';
    },
  );
 
- export const NearestFarmaciesCollection = model('orders', nearestFarmaciesSchema);
+ export const NearestCollection = model('nearest', nearestSchema);
