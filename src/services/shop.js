@@ -12,25 +12,10 @@ export const createShop = async (payload) => {
   });
 };
 
-export const getShopInfo = async (shopId) => {
-    const shop = await UsersCollection.findById(shopId, 'name email');
-
-    const latestCustomers = await CustomersCollection.find()
-      .sort({ register_date: -1 })
-      .limit(5)
-      .select('name email spent country')
-      .lean();
-
-    const incomeExpenses = await IncomeExpensesCollection.find()
-      .sort({ date: -1 })
-      .lean();
-
-    return {
-      totalProducts,
-      totalSuppliers,
-      totalCustomers,
-      latestCustomers,
-      incomeExpenses,
-      user,
-    };
+  export const getShopInfo = async (shopId) => {
+    const shop = await ShopCollection.findById(shopId, 'name owner email phone address city zip delivery');
+    if (!shop) {
+      throw new createHttpError(404, 'Shop not found');
+    }
+    return shop;
   };
